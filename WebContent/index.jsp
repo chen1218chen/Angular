@@ -75,7 +75,7 @@
 					</li>
 					<li>
 						<div>
-							<span class="fa  fa-user fa-2x"></span> <a href="#">用户 </a> <span
+							<span class="fa fa-user fa-2x"></span> <a href="#">用户 </a> <span
 								class="the-btn fa fa-plus"></span>
 						</div>
 						<ul class="twoLevel">
