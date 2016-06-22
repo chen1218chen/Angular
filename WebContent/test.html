@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+function inherits(child,parent){
+	if(parent== null)
+		throw "TypeError";
+	var type = typeof parnet;
+	if(type!=="object"&&type!=="function")
+		throw "TypeError";
+    var F = function(){};
+    F.prototype = parent.prototype;
+    child.prototype = F;
+    //修复构造函数，否则会调用F的constructor
+    child.prototype.constructor = child;
+}
+
+function People(props){
+    this.name = props.name || 'unnamed';
+}
+
+People.prototype.hello = function(){
+    alert('hello,'+this.name);
+}
+
+function Student(props){
+    People.call(this,props);
+    this.age = props.age||1;
+}
+
+Student.prototype.test = function(){
+	alert("Student test");
+}
+inherits(Student,People);
+var tmp ={
+		name:"cc",
+		age:"26"
+};
+var cc = new Student(tmp);
+//cc.test();
+
+
+function typeValue(x){
+	if(x==null) return ;
+	switch(x.constructor){
+	case Number: return "Number"+x;
+	case String: return "String"+x;
+	case Date: return "Date"+x;
+	...
+	
+	}
+}
+</script>
+111111111111
+</body>
+</html>

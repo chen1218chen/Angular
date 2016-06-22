@@ -1,0 +1,277 @@
+/*
+Tutorial Name: Off Canvas Sliding Navigation
+Author: Samuel Dalusung
+*/
+
+
+/* GENERAL STYLES
+-------------------------------------------------*/
+
+html, 
+body{
+background: #f3efe0;
+font-size: 14px;
+}
+
+
+h1, h2, h3{
+	text-align: center;
+
+}
+
+h1{
+	font-family: 'Raleway', Arial, sans-serif;
+	font-weight: 700;
+	font-size: 45px;
+	margin-top: 15px;
+	color: #38935f;
+
+}
+
+h3{
+	font-family: 'Raleway', Arial, sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	margin-top: 15px;
+	color: #918e84;
+}
+/* nav */
+#nav-custom{
+	 margin-bottom: 0px;
+}
+
+/* CONTAINERS
+-------------------------------------------------*/
+
+#container {
+    width: 100%;
+    height: 100vh; 
+    position: relative;
+    overflow: hidden;
+}
+
+#logo{
+	background-image: url(../images/banner.png);
+/* 	height:50px; */
+}
+#canvas {
+    width: 100%;
+    height: 100vh;
+    padding:0;
+    position: relative;
+    background-color:white;
+
+  -webkit-transform:translateX(0);
+   -moz-transform:translateX(0);
+    -ms-transform:translateX(0);
+     -o-transform:translateX(0);
+        transform:translateX(0);
+
+   -webkit-transition:.5s ease all;
+   -moz-transition:.5s ease all;
+     -o-transition:.5s ease all;
+        transition:.5s ease all;
+
+ 
+}
+
+#nav {
+    width: 25%;
+    height: 100%;
+    background: #38935f;
+    position: absolute;
+    left: -255px;
+    top: 0;
+    
+    -webkit-transition:.5s ease all;
+   -moz-transition:.5s ease all;
+     -o-transition:.5s ease all;
+        transition:.5s ease all;
+    
+    /* By default, rotate the menu 90deg inwards */
+    -webkit-transform:rotateY(-90deg);
+   -moz-transform:rotateY(-90deg);
+    -ms-transform:rotateY(-90deg);
+     -o-transform:rotateY(-90deg);
+        transform:rotateY(-90deg);
+}
+
+#container.display-nav #canvas {
+   -webkit-transform:translateX(250px);
+   -moz-transform:translateX(250px);
+    -ms-transform:translateX(250px);
+     -o-transform:translateX(250px);
+        transform:translateX(250px);
+        
+        width:80%;
+}
+
+/* transition the menu with perspective on "show-nav" */
+#container.display-nav #nav {
+    /*定义元素旋转位置  */
+    -webkit-transform-origin:100% 50%;
+   -moz-transform-origin:100% 50%;
+    -ms-transform-origin:100% 50%;
+     -o-transform-origin:100% 50%;
+        transform-origin:100% 50%;
+    /*rotateY:沿着 Y 轴的 3D 旋转。perspective:为 3D 转换元素定义透视视图。  */
+    -webkit-transform:perspective(600px) rotateY(0deg);
+   -moz-transform:perspective(600px) rotateY(0deg);
+    -ms-transform:perspective(600px) rotateY(0deg);
+     -o-transform:perspective(600px) rotateY(0deg);
+        transform:perspective(600px) rotateY(0deg); 
+
+}
+
+
+/* UTILITIES
+-------------------------------------------------*/
+
+#bars{
+	font-size: 28px;
+	margin-left: 20px;
+	color: #38935f;
+}
+
+#bars:hover{
+       color: #48b978
+}
+
+#title{
+	color: white;
+	height: 20vh;
+	line-height:20vh;
+	margin:0 auto;
+	text-align: center;
+	text-shadow: 0 0 1px rgba(0,0,0,0.1);
+	font-weight: 300;
+	font-size: 2.5rem;
+	font-family: 'Raleway', Arial;
+}
+
+.border{
+border-top: 1px solid rgba(0,0,0,0.2);
+
+}
+a.back {
+   color: #38935f; 
+   width: 200px;
+   text-decoration: none; 
+   text-align: center; 
+   font-family: 'Raleway'; 
+   font-size: 20px;
+   font-weight: 600;
+   display: block;
+   margin: 50px auto 0 auto;
+   border: 2px solid #38935f;
+   padding: 10px;
+
+}
+
+a.back:hover{
+   color: #48b978; 
+ 
+   border: 2px solid #48b978;
+}
+
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+
+
+/* TOGGLE NAV
+-------------------------------------------------*/
+
+.toggle {
+    list-style: none;
+}
+.toggle div:hover {
+    background: rgba(0,0,0,0.2);
+	-webkit-box-shadow:inset 0 -1px rgba(0,0,0,0);
+   -moz-box-shadow:inset 0 -1px rgba(0,0,0,0);
+        box-shadow:inset 0 -1px rgba(0,0,0,0);
+	color: #fff;
+}
+.toggle div.active {
+    background: #1f9d55;
+}
+.toggle div {
+
+    cursor: pointer;
+    display: block;
+       border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.fa {
+    float: left;
+    margin-left:15px;
+    color: #fff;
+    vertical-align: middle;
+    padding-top:8px;
+}
+
+.text {
+	text-decoration: none;
+}
+span.the-btn {
+    float: right;
+    font-size: 20px;
+    height: 30px;
+    width: 43px;
+    margin-top: 10px;
+	margin-right: 8px;
+    padding-top:0;
+    color: #fff;
+}
+
+.toggle ul {
+    list-style: disc;
+    display: none;
+    color: #fff;
+   background: rgba(0,0,0,0.2);
+	-webkit-box-shadow:inset 0 -1px rgba(0,0,0,0);
+   -moz-box-shadow:inset 0 -1px rgba(0,0,0,0);
+        box-shadow:inset 0 -1px rgba(0,0,0,0);
+
+}
+
+.toggle li a {
+    line-height: 41px;
+    color: #fff;
+    list-style: circle;
+    width:100%;
+    padding: 0;
+  	 margin: 0 0 0 10px;
+
+}
+.toggle a {
+	margin: 0 0 0 47px;
+    padding: 0;
+    width:100%;
+    font-family: 'Lato';
+    color: #fff;
+    line-height: 41px;
+    font-weight: normal;
+    font-size: 1.4rem;
+    text-decoration: none;
+
+}
+.toggle ul li {
+     margin-left: 50px;   
+}
+.twoLevel a{
+	font-size: 14px;
+}
+
+.toggle ul li a:hover{
+	background: #1f9d55;
+}
+
+.toggle ul li a {
+     margin-left: 0;   
+}
