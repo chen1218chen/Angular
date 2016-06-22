@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans       
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd ">
+       
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 用注解让spring管理bean -->
+	<context:component-scan base-package="com.city" />
+	<!-- DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter 使用@ReqeustMapping注释的类或函数的beans由Spring处理 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+
+	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json /blog/1.xml -->
+	<!-- ContentNegotiatingViewResolver是根据客户提交的MimeType (如 text/html,application/xml)来跟服务端的一组viewResover的MimeType相比较, 
+		如果符合,即返回viewResover的数据. -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+		<property name="defaultContentType" value="text/html" />
+		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<!-- 用于开启 /userinfo/123?format=type(json,xml) 的支持 -->
+		<property name="favorParameter" value="true" />
+		<property name="viewResolvers">
+			<list>
+				<!-- BeanNameViewResolver：这个视图解析器跟XmlViewResolver有点类似， 也是通过把返回的逻辑视图名称去匹配定义好的视图bean对象。 
+					不同点有二， 一是BeanNameViewResolver要求视图bean对象都定义在Spring的application context中， 而XmlViewResolver是在指定的配置文件中寻找视图bean对象， 
+					二是BeanNameViewResolver不会进行视图缓存 -->
+				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+				<bean
+					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="viewClass"
+						value="org.springframework.web.servlet.view.JstlView" />
+					<property name="prefix" value="/views/" />
+					<property name="suffix" value=".jsp"></property>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- for application/json -->
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+
+				</bean>
+				<!-- for application/xml -->
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<property name="marshaller">
+						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+							<!-- spring3.2 或更高 -->
+							<!-- <property name="packagesToScan" value="com.aerors.model"></property> -->
+
+							<!-- spring3.1 -->
+							<property name="packagesToScan">
+								<list>
+									<value>com.city.model</value>
+								</list>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>
+	

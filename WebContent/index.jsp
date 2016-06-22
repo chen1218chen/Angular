@@ -106,24 +106,42 @@
 				</ul>
 			</div>
 			<div id="canvas-content">
-				<a type="button" href="javascript:void(0);" class="toggle-nav"
-					id="bars"><i class="glyphicon glyphicon-th-list"></i></a>
-				<h1>主页</h1>
-
-				<table id="table" class="table table-hover table-no-bordered"
-					data-toggle="table" data-url="rest/Uploadinfo/queryAll"
-					data-resizable="true" data-show-refresh="true"
-					data-sort-name="name" data-sort-order="desc"
-					data-search="true" data-toolbar="#toolbar"> 
-					<thead>
-						<tr>
-							<th data-field="name">Name</th>
-							<th data-field="stargazers_count">Stars</th>
-							<th data-field="forks_count">Forks</th>
-							<th data-field="description">Description</th>
-						</tr>
-					</thead>
-				</table>
+				<div id="contentTitle">
+					<a type="button" class="toggle-nav" id="bars">
+						<i class="fa fa-list fa-2x"></i>
+					</a>
+					<span>主页</span>
+				</div>
+				<div id="framework">
+					<div id="toolbar" class="btn-group">
+						<button type="button" class="btn btn-info" id="save"
+							style="margin-top: 2px; margin-right: 5px; padding: 3px 12px">
+							保存</button>
+						<button type="button" class="btn btn-info" id="classfiSearch"
+							style="margin-top: 2px; margin-right: 5px; padding: 3px 12px">
+							搜索</button>
+					</div>
+					<table id="table" class="table table-hover" data-toggle="table"
+						data-url="rest/Uploadinfo/queryAll" data-resizable="true"
+						data-show-refresh="true" data-pagination="true"
+						data-row-style="rowStyle"
+						data-page-list="[10, 20, 50,100,500,1000]" data-sort-name="name"
+						data-sort-order="desc" data-search="true" data-toolbar="#toolbar"
+						data-height="300px">
+						<thead>
+							<tr>
+								<th data-field="state" data-align="center" data-valign="middle"
+									data-checkbox="true" data-visible="true" id="check"></th>
+								<th data-align="center" data-formatter="runningFormatter">编号</th>
+								<th data-field="name">Name</th>
+								<th data-field="telephone">telephone</th>
+								<th data-field="content">content</th>
+								<th data-field="dataTime">dataTime</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<!-- table end -->
 			</div>
 		</div>
 	</div>

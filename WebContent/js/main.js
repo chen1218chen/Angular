@@ -1,6 +1,32 @@
+function rowStyle(row, index) {
+    /*var classes = ['active', 'success', 'info', 'warning', 'danger'];*/
+	var classes = ['success', 'info', 'warning', 'danger'];
+    
+    /*if (index % 2 === 0 && index / 2 < classes.length) {
+        return {
+            classes: classes[index / 2]
+        };
+    }*/
+    if(index % 2 ===0){
+    	return {
+    		classes:classes[index%3]
+    	};
+    }
+    return {};
+}
+
+function runningFormatter(value, row, index) {
+    return index+1;
+}
 require([ 'config' ], function() {
 	require([ 'bootstrapTable', 'app', 'custom'], function(bootstrapTable,
 			app) {
+		//页面自适应
+		$(function(){
+			$(window).resize(function() {
+				$('#table').bootstrapTable('resetView');
+			});
+		})
 		var data = [
 					{
 						"name" : "bootstrap-table",
