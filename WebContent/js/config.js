@@ -4,14 +4,14 @@ requirejs.config({
 		app : '../js/app',
 		css : '../js/css.min',
 		custom: '../js/custom',
-		index: '../js/index',
+		common: '../js/common',
 		jquery : 'jquery/jquery.min',
 		bootstrap : 'bootstrap/js/bootstrap.min',
 		bootstrapTable : 'bootstrap-table/js/bootstrap-table.min',
 		react : 'react/react.min',
 		angular : 'angular/angular.min',
-		confirm : 'jquery-confirm/jquery.confirm.min.js',
-		bootstrapDialog : 'bootstrap3-dialog/js/bootstrap-dialog.min.js'
+		confirm : 'jquery-confirm/jquery.confirm.min',
+		'bootstrap-dialog' : 'bootstrap3-dialog/js/bootstrap-dialog.min'
 	},
 	shim : {
 		jquery : {
@@ -22,6 +22,9 @@ requirejs.config({
 		},
 		custom : {
 			deps: ['jquery']
+		},
+		common : {
+			deps: ['jquery','confirm', 'bootstrap-dialog']
 		},
 		index : {
 			deps: ['jquery']
@@ -41,8 +44,8 @@ requirejs.config({
 		confirm : {
 			deps : [ 'jquery' ]
 		},
-		bootstrapDialog : {
-			deps : [ 'css!./bootstrap3-dialog/css/bootstrap-dialog.min.css' ]
+		'bootstrap-dialog' : {
+			deps : [ 'jquery','bootstrap', 'css!./bootstrap3-dialog/css/bootstrap-dialog.min.css' ]
 		}
 		
 	}

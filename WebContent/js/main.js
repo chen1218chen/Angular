@@ -19,14 +19,14 @@ function runningFormatter(value, row, index) {
     return index+1;
 }
 require([ 'config' ], function() {
-	require([ 'bootstrapTable', 'app', 'custom'], function(bootstrapTable,
-			app) {
+	require([ 'bootstrapTable', 'app','common', 'custom'], function(bootstrapTable,
+			app,common) {
 		//页面自适应
-		$(function(){
-			$(window).resize(function() {
-				$('#table').bootstrapTable('resetView');
-			});
-		})
+
+		$(window).resize(function() {
+			$('#table').bootstrapTable('resetView');
+		});
+		
 		var data = [
 					{
 						"name" : "bootstrap-table",
@@ -60,6 +60,13 @@ require([ 'config' ], function() {
 					} ];
 		$('#table').bootstrapTable({
 			data : data
+		});
+		
+		$("#delete").click(function(){
+			var frame = $("#frame").remove();
+		});
+		$("#logout").click(function(){
+			common.logout();
 		});
 	})
 })
