@@ -1,4 +1,4 @@
-define([ 'confirm', 'bootstrap-dialog' ], function(confirm, BootstrapDialog) {
+define([ 'confirm'], function(confirm, BootstrapDialog) {
 
 	var common = {};
 	common.init = function() {
@@ -20,8 +20,8 @@ define([ 'confirm', 'bootstrap-dialog' ], function(confirm, BootstrapDialog) {
 
 	common.logout = function() {
 		$.confirm({
-			title : '退出',
-			content : '确定退出登陆吗？',
+			title : '确定退出登陆吗？',
+			content : false,
 			confirmButton : '确定',
 			cancelButton : '取消',
 			confirmButtonClass : 'btn-success',

@@ -5,12 +5,17 @@ requirejs.config({
 		css : '../js/css.min',
 		custom: '../js/custom',
 		common: '../js/common',
+		domReady: 'domReady/domReady',
 		jquery : 'jquery/jquery.min',
+		react : 'react/react.min',
+		angular : 'angular/angular',
+	/*	"angular-route":"path/to/angular-route",*/
 		bootstrap : 'bootstrap/js/bootstrap.min',
 		bootstrapTable : 'bootstrap-table/js/bootstrap-table.min',
-		react : 'react/react.min',
-		angular : 'angular/angular.min',
-		confirm : 'jquery-confirm/jquery.confirm.min',
+		tableLanguage : 'bootstrap-table/locale/bootstrap-table-zh-CN.min',
+		tableExport:'bootstrap-table/extensions/tableExport',
+		bootstrapTableExport:'bootstrap-table/extensions/bootstrap-table-export.min',
+		confirm : 'jquery-confirm2/jquery-confirm.min',
 		'bootstrap-dialog' : 'bootstrap3-dialog/js/bootstrap-dialog.min'
 	},
 	shim : {
@@ -24,7 +29,7 @@ requirejs.config({
 			deps: ['jquery']
 		},
 		common : {
-			deps: ['jquery','confirm', 'bootstrap-dialog']
+			deps: ['confirm', 'bootstrap-dialog']
 		},
 		index : {
 			deps: ['jquery']
@@ -32,21 +37,38 @@ requirejs.config({
 		angular : {
 			exports : 'angular'
 		},
+		
 		bootstrap : {
 			deps : [ 'jquery', 'css!../lib/bootstrap/css/bootstrap.min.css' ],
 			exports : "$.fn.popover"
 		},
+		tableLanguage : {
+			deps : [ 'bootstrapTable' ],
+			exports : '$.fn.bootstrapTable.defaults'
+		},
 		bootstrapTable : {
-			deps : [ 'jquery', 'bootstrap',
+			deps : ['bootstrap',
 					'css!./bootstrap-table/css/bootstrap-table.min.css' ],
 			exports : '$.fn.bootstrapTable'
 		},
+		tableExport : {
+			deps: ['jquery'],
+			exports : '$.fn.extend'
+		},
+		bootstrapTableExport:{
+			deps:['bootstrapTable'],
+			exports : '$.fn.bootstrapTable.defaults'
+		},
 		confirm : {
-			deps : [ 'jquery' ]
+			deps : [ 'jquery','css!./jquery-confirm2/jquery-confirm.min.css' ]
 		},
 		'bootstrap-dialog' : {
-			deps : [ 'jquery','bootstrap', 'css!./bootstrap3-dialog/css/bootstrap-dialog.min.css' ]
+			deps : ['bootstrap', 'css!./bootstrap3-dialog/css/bootstrap-dialog.min.css' ]
 		}
 		
-	}
+	},
+	//开发专用，阻止浏览器缓存
+/*	urlArgs: "bust=" +  (new Date()).getTime(),*/
+	//在放弃加载一个脚本之前等待的秒数。设为0禁用等待超时。默认为7秒。
+	waitSeconds: 0
 });

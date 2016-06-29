@@ -1,11 +1,23 @@
-define(['bootstrapTable'], function(bootstrapTable) {
+define([ 'bootstrapTable', 'angular' ], function(bootstrapTable, angular) {
+	'use strict';
+
 	var app = {};
+
+	var title = angular.module("myApp", []);
+	title.controller('myCtrl', function($scope) {
+		$scope.title = "主页";
+	});
+	
+	angular.element(document).ready(function() {
+		angular.bootstrap(document, [ 'myApp' ]);
+	});
 
 	app.tableInit = function() {
 		$('#table').bootstrapTable({
 			data : data
 		});
 	};
+
 	//前台数据组装展示
 	app.tableShow = function(data) {
 
@@ -75,6 +87,6 @@ define(['bootstrapTable'], function(bootstrapTable) {
 			}
 		});
 	};
-	
+
 	return app;
 });

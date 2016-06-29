@@ -10,6 +10,7 @@
 <link href="css/reset.css" rel="stylesheet">
 <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<!-- <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script> -->
 <script src="lib/requirejs/require.js" data-main="js/main"></script>
 <style type="text/css">
 </style>
@@ -17,11 +18,11 @@
 
 <%@include file="header.html"%>
 
-<div id="canvas-content">
-	<div id="contentTitle">
+<div id="canvas-content" >
+	<div id="contentTitle" ng-controller="myCtrl">
 		<a type="button" class="toggle-nav" id="bars"> <i
 			class="fa fa-list fa-2x"></i>
-		</a> <span>主页</span>
+		</a> <span>{{title}}</span>
 	</div>
 	<div id="frame">
 		<div id="toolbar" class="btn-group">
@@ -37,12 +38,12 @@
 			data-show-refresh="true" data-pagination="true"
 			data-row-style="rowStyle" data-page-list="[10, 20, 50,100,500,1000]"
 			data-sort-name="name" data-sort-order="desc" data-search="true"
-			data-toolbar="#toolbar" data-height="300px" data-show-columns="true"
-			data-show-export="true" data-id-field="id">
+			data-toolbar="#toolbar" data-height="800" data-show-columns="true"
+			data-show-export="true">
 			<thead>
 				<tr>
 					<th data-field="state" data-align="center" data-valign="middle"
-						data-checkbox="true" data-visible="true" id="check"></th>
+						data-checkbox="true" data-visible="true"></th>
 					<th data-align="center" data-formatter="runningFormatter">编号</th>
 					<th data-field="name">Name</th>
 					<th data-field="telephone">telephone</th>

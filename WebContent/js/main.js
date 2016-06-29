@@ -19,13 +19,18 @@ function runningFormatter(value, row, index) {
     return index+1;
 }
 require([ 'config' ], function() {
-	require([ 'bootstrapTable', 'app','common', 'custom'], function(bootstrapTable,
-			app,common) {
+	require(['tableExport', 'bootstrapTable', 'angular','app','common','!domReady','tableLanguage',
+	          'bootstrapTableExport','custom','domReady!'], function(tableExport,bootstrapTable,
+	        angular,app,common,domReady,tableLanguage,bootstrapTableExport) {
 		//页面自适应
 
 		$(window).resize(function() {
 			$('#table').bootstrapTable('resetView');
 		});
+		
+		
+//		angular.bootstrap(document,['myApp']);
+		 
 		
 		var data = [
 					{

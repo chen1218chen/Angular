@@ -22,9 +22,10 @@
     "bootstrap-table": "^1.10.1",
     "react": "^15.1.0",
     "font-awesome": "^4.6.3",
-    "jquery-confirm": "^2.6.0",
     "jquery-ui": "^1.11.4",
-    "bootstrap3-dialog": "bootstrap-dialog#^1.35.1"
+    "bootstrap3-dialog": "bootstrap-dialog#^1.35.1",
+    "domReady": "^2.0.1",
+    "jquery-confirm2": "craftpip/jquery-confirm#^2.5.1"
   },
   "exportsOverride": {
     "angular": {
@@ -35,7 +36,7 @@
       "css": "dist/css/*.min.css",
       "fonts": "dist/fonts/*.*"
     },
-     "bootstrap3-dialog": {
+    "bootstrap3-dialog": {
       "js": "dist/js/*.min.js",
       "css": "dist/css/*.min.css"
     },
@@ -65,8 +66,11 @@
     "jquery-ui": {
       "": "*.min.js"
     },
-    "jquery-confirm": {
-      "": "*.min.js"
+    "jquery-confirm2":{
+      "":"dist/*.*"
+    },
+    "domReady": {
+      "": "*.js"
     }
   }
 }

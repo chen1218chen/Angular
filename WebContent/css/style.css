@@ -69,7 +69,15 @@ h3 {
 	-o-transition: .5s ease all;
 	transition: .5s ease all;
 }
-
+#footer{
+	position: absolute;
+	bottom: 0px;
+	height: 80px;
+	width: 100%;
+	color:white;
+	text-align: center;
+	
+}
 #contentTitle {
 	vertical-align: middle;
 	text-align: center;
