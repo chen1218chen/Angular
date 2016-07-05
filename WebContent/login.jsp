@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" /> -->
 <script>
 	function sheetLoaded() {
 		// Do something interesting; the sheet has been loaded
@@ -16,6 +16,7 @@
 <meta http-equiv="X-UA_compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="lib/requirejs/require.js" data-main="js/login"></script>
 <title>登陆页面</title>
 <!-- <link rel="stylesheet" href="mystylesheet.css" onload="sheetLoaded()" onerror="sheetError()">
  -->
@@ -143,20 +144,20 @@ label {
 </style>
 </head>
 <body>
-	<div class="login" id="login">
+	<div class="login" id="login" ng-controller="loginCtrl">
 		<form method="post" action="" accept-charset="UTF-8">
 			<div class="form-header">
-				<h1>登陆</h1>
+				<h1 >{{title}}</h1>
 			</div>
 			<div class="form-body">
 				<label for="login_field"> 用户名/邮箱 </label> <input type="text"
-					tabindex="1" name="login" id="login_field"
+					tabindex="1" name="login" id="login_field" ng-model="user.name"
 					class="form-control input-block" autofocus="autofocus"
 					autocorrect="off" autocapitalize="off"> <label
 					for="password"> 密码 <a class="label-link"
 					href="/password_reset">忘记密码?</a>
 				</label> <input type="password" tabindex="2" name="password" id="password"
-					class="form-control form-control input-block"> <input
+					class="form-control form-control input-block" ng-model="user.password">  <input
 					type="submit" value="登陆" tabindex="3" name="commit"
 					class="btn btn-success btn-block">
 			</div>
@@ -173,6 +174,7 @@ label {
 				<li><a href="">Security</a></li>
 				<li><a href="">Contact</a></li>
 			</ul>
+			{{user.name}}
 		</div>
 	</div>
 </body>

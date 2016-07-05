@@ -67,8 +67,10 @@ requirejs.config({
 		}
 		
 	},
+	//首先加载bootstrap
+	deps: ['bootstrap'],
 	//开发专用，阻止浏览器缓存
-/*	urlArgs: "bust=" +  (new Date()).getTime(),*/
+	urlArgs: "bust=" +  (new Date()).getTime(),
 	//在放弃加载一个脚本之前等待的秒数。设为0禁用等待超时。默认为7秒。
 	waitSeconds: 0
 });
