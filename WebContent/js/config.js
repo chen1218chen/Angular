@@ -2,11 +2,13 @@ requirejs.config({
 	baseUrl : 'lib/',
 	paths : {
 		app : '../js/app',
+		map: '../js/map',
 		css : '../js/css.min',
 		custom: '../js/custom',
 		common: '../js/common',
 		domReady: 'domReady/domReady',
 		jquery : 'jquery/jquery.min',
+		async: 'requirejs-plugins/async',
 		react : 'react/react.min',
 		angular : 'angular/angular',
 	/*	"angular-route":"path/to/angular-route",*/
@@ -16,7 +18,11 @@ requirejs.config({
 		tableExport:'bootstrap-table/extensions/tableExport',
 		bootstrapTableExport:'bootstrap-table/extensions/bootstrap-table-export.min',
 		confirm : 'jquery-confirm2/jquery-confirm.min',
-		'bootstrap-dialog' : 'bootstrap3-dialog/js/bootstrap-dialog.min'
+		'bootstrap-dialog' : 'bootstrap3-dialog/js/bootstrap-dialog.min',
+		BMap : 'http://api.map.baidu.com/api?v=2.0&ak=Ua9wlu6LbqmNKVbMEGtkgSxvljqZC5fc',
+		SearchInfoWindow :'http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min',
+		TrafficControl : 'http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min',
+		DistanceTool : 'http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min',
 	},
 	shim : {
 		jquery : {
@@ -64,8 +70,23 @@ requirejs.config({
 		},
 		'bootstrap-dialog' : {
 			deps : ['bootstrap', 'css!./bootstrap3-dialog/css/bootstrap-dialog.min.css' ]
-		}
-		
+		},
+		BMap: {
+            deps: ['jquery','css!../css/map.css'],
+            exports: 'BMap'
+        },
+        SearchInfoWindow :{
+        	deps: ['jquery','BMap','css!http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css'],
+        	exports:'BMapLib'
+        },
+        TrafficControl :{
+        	deps: ['jquery','BMap','css!http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css'],
+        	exports:'BMapLib'
+        },
+        DistanceTool :{
+        	deps: ['jquery','BMap'],
+        	exports:'BMapLib'
+        }
 	},
 	//首先加载bootstrap
 	deps: ['bootstrap'],

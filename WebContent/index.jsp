@@ -10,13 +10,13 @@
 <link href="css/reset.css" rel="stylesheet">
 <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<!-- <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script> -->
+
 <script src="lib/requirejs/require.js" data-main="js/main"></script>
 <style type="text/css">
 </style>
 </head>
 
-<%@include file="header.html"%>
+<%@include file="header.jsp"%>
 
 <div id="canvas-content" >
 	<div id="contentTitle" ng-controller="myCtrl">

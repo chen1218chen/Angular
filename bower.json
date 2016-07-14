@@ -25,7 +25,8 @@
     "jquery-ui": "^1.11.4",
     "bootstrap3-dialog": "bootstrap-dialog#^1.35.1",
     "domReady": "^2.0.1",
-    "jquery-confirm2": "craftpip/jquery-confirm#^2.5.1"
+    "jquery-confirm2": "craftpip/jquery-confirm#^2.5.1",
+    "requirejs-plugins": "^1.0.3"
   },
   "exportsOverride": {
     "angular": {
@@ -66,11 +67,14 @@
     "jquery-ui": {
       "": "*.min.js"
     },
-    "jquery-confirm2":{
-      "":"dist/*.*"
+    "jquery-confirm2": {
+      "": "dist/*.*"
     },
     "domReady": {
       "": "*.js"
+    },
+    "requirejs-plugins": {
+      "":"src/*.js"
     }
   }
 }

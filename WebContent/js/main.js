@@ -27,11 +27,7 @@ require([ 'config' ], function() {
 		$(window).resize(function() {
 			$('#table').bootstrapTable('resetView');
 		});
-		
-		
 //		angular.bootstrap(document,['myApp']);
-		 
-		
 		var data = [
 					{
 						"name" : "bootstrap-table",

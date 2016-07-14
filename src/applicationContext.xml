@@ -142,8 +142,7 @@
 				/*.js = anon
 				/*.css = anon
 				/search.jsp = anon
-				<!-- authc表示需要认证的链接 -->
-				/*.jsp = authc,roles["管理员"]
+			<!-- 	/*.jsp = authc,roles["管理员"] -->
 			</value>
 		</property>
 	</bean>

@@ -5,7 +5,7 @@ require(['config'],function(){
 		
 		var app = angular.module("myApp",[]);
 		app.controller('loginCtrl', function($scope) {
-			$scope.title = "主页";
+			$scope.title = "登陆";
 		});
 		angular.element(document).ready(function() {
 			angular.bootstrap(document, [ 'myApp' ]);

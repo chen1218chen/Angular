@@ -1,13 +1,14 @@
 ﻿<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
+<link href="css/map.css" rel="stylesheet" type="text/css" />
 <body>
 	<div id="container" class="display-nav">
 		<!-- 	<div id="logo"><h1>后台管理</h1></div> -->
-		<nav class="navbar navbar-default" id="nav-custom">
-			<!-- Brand and toggle get grouped for better mobile display -->
+		<!-- <nav class="navbar navbar-default" id="nav-custom">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">后台管理</a>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -40,21 +41,31 @@
 						</ul></li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
-		</nav>
+			/.navbar-collapse
+		</nav> -->
 		<div id="canvas">
 			<div id="nav">
-				<div id="title">目录</div>
+				<div id="title">
+					<shiro:user>
+						<img id="avatar" src="images/user.jpg" data-toggle="popover"
+							data-placement="bottom"
+							data-title='欢迎您：<%out.println(session.getAttribute("uname"));%>' />
+					</shiro:user>
+					<shiro:guest>
+						<img id="avatar1" src="images/user.jpg" data-toggle="popover"
+							data-placement="bottom" data-title='请登录' />
+					</shiro:guest>
+				</div>
 				<ul id="toggle" class="toggle">
 					<li>
 						<div class="active border">
-							<span class="fa fa-home fa-2x"></span> <a href="#">首页</a>
+							<span class="fa fa-home fa-2x"></span> <a href="map.jsp">首页</a>
 						</div>
 					</li>
 					<li>
 						<div>
-							<span class="fa fa-user fa-2x"></span> <a href="#">用户 </a> <span
-								class="the-btn fa fa-plus"></span>
+							<span class="fa fa-user fa-2x"></span> <a href="index.jsp">用户
+							</a> <span class="the-btn fa fa-plus"></span>
 						</div>
 						<ul class="twoLevel">
 							<li><a href="#">二级菜单1</a></li>

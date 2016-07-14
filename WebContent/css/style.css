@@ -72,7 +72,7 @@ h3 {
 #footer{
 	position: absolute;
 	bottom: 0px;
-	height: 80px;
+	height: 30px;
 	width: 100%;
 	color:white;
 	text-align: center;
@@ -150,8 +150,7 @@ h3 {
 }
 
 #title {
-	color: white;
-	height: 20vh;
+	height: 40vh;
 	line-height: 20vh;
 	margin: 0 auto;
 	text-align: center;
