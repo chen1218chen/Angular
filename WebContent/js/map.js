@@ -18,7 +18,7 @@ define(
 			// 登陆管理面板
 			map.loginManager = function() {
 				options = {
-						"content" : "<button class='btn btn-danger btn-xs' id='logout' onclick='logout();'>退出登录</button>",
+						"content" : "<button class='btn btn-danger btn-xs' id='logout'>退出登录</button>",
 						"html" : true
 					};
 					options1 = {

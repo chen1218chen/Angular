@@ -10,8 +10,10 @@ requirejs.config({
 		jquery : 'jquery/jquery.min',
 		async: 'requirejs-plugins/async',
 		react : 'react/react.min',
-		angular : 'angular/angular',
-	/*	"angular-route":"path/to/angular-route",*/
+		angular : 'angular/angular.min',
+		'angular-route': 'angular/angular-route.min',
+		angularAMD: 'angularAMD/angularAMD.min',
+		ngload: 'angularAMD/ngload.min',
 		bootstrap : 'bootstrap/js/bootstrap.min',
 		bootstrapTable : 'bootstrap-table/js/bootstrap-table.min',
 		tableLanguage : 'bootstrap-table/locale/bootstrap-table-zh-CN.min',
@@ -43,26 +45,35 @@ requirejs.config({
 		angular : {
 			exports : 'angular'
 		},
-		
+		'angular-route':{
+            deps:['angular'],
+            exports: 'angular-route'
+        },
+		angularAMD: {
+			deps: ['angular']
+		},
+        ngload: {
+        	deps: ['angularAMD'] 
+        },
 		bootstrap : {
 			deps : [ 'jquery', 'css!../lib/bootstrap/css/bootstrap.min.css' ],
 			exports : "$.fn.popover"
 		},
-		tableLanguage : {
-			deps : [ 'bootstrapTable' ],
-			exports : '$.fn.bootstrapTable.defaults'
-		},
 		bootstrapTable : {
-			deps : ['bootstrap',
+			deps : ['jquery','bootstrap',
 					'css!./bootstrap-table/css/bootstrap-table.min.css' ],
 			exports : '$.fn.bootstrapTable'
 		},
+		tableLanguage : {
+			deps : [ 'jquery','bootstrapTable' ],
+			exports : '$.fn.bootstrapTable.defaults'
+		},
 		tableExport : {
-			deps: ['jquery'],
+			deps: ['jquery','bootstrapTableExport'],
 			exports : '$.fn.extend'
 		},
 		bootstrapTableExport:{
-			deps:['bootstrapTable'],
+			deps:['jquery','bootstrapTable'],
 			exports : '$.fn.bootstrapTable.defaults'
 		},
 		confirm : {
@@ -89,7 +100,7 @@ requirejs.config({
         }
 	},
 	//首先加载bootstrap
-	deps: ['bootstrap'],
+	deps: ['bootstrap','app'],
 	//开发专用，阻止浏览器缓存
 	urlArgs: "bust=" +  (new Date()).getTime(),
 	//在放弃加载一个脚本之前等待的秒数。设为0禁用等待超时。默认为7秒。

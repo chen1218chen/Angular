@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//WebContent/header.jsp=UTF-8
+encoding//WebContent/view/main.html=UTF-8
+encoding//WebContent/view/map.html=UTF-8
